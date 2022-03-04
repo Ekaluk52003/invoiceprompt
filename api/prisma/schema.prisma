@@ -1,0 +1,77 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  username  String   @unique
+  email     String   @unique
+  password  String
+  role      Role[]
+  Invoice   Invoice[]
+  createdAt DateTime @default(now())
+}
+
+
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name     String   @unique
+  Invoice   Invoice[]
+  contactInfo   String
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Status {
+  PAID
+  OVERDUE
+  CANCEL
+  DRAFT
+  BILLED
+}
+
+
+model Invoice {
+  id        Int      @id @default(autoincrement())
+  title     String
+  dueDate   DateTime?
+  description   String?
+  term     Int?
+  status Status?
+  number    Int?
+  TotalAmount Int
+  items     Json?
+  user      User     @relation(fields: [userId], references: [id])
+  customer   Customer     @relation(fields: [customerId ], references: [id])
+  customerId Int
+  userId    Int
+  createdAt DateTime @default(now())
+  InvoiceHistory  InvoiceHistory[]
+}
+
+model InvoiceHistory {
+ id        Int      @id @default(autoincrement())
+ user       String?
+ description   String?
+ invoice    Invoice @relation(fields: [ invoiceId ], references: [id])
+ invoiceId Int
+  createdAt DateTime @default(now())
+}
+
+model InvoiceNumber {
+  id        Int      @id @default(autoincrement())
+  number    Int
+
+}

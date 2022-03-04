@@ -1,0 +1,20 @@
+
+
+# milldev.localhost {
+#   header Origin https://frontdev.localhost
+#   header Access-Control-Allow-Origin  https://frontdev.localhost
+
+#     reverse_proxy server:5000
+
+# }
+
+https://backend.localhost  {
+
+
+    reverse_proxy server:5000
+}
+
+
+frontdev.localhost {
+  reverse_proxy frontend:3000
+}

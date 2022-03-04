@@ -1,0 +1,63 @@
+version: '3.8'
+services:
+
+  redis:
+    image: "redis"
+    command: redis-server
+    ports:
+      - "6378:6379"
+
+  db:
+    image: "postgres"
+    ports:
+      - "2345:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "mydb"
+
+  server:
+    build: ./api
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/mydb?schema=public"
+      REDIS_URL: 'redis://redis:6379'
+      PORT: '5000'
+    container_name: promptinv_api_container
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+      - "5555:5555"
+    links :
+      - redis
+      - db
+
+    volumes:
+      - ./api:/app/
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy:/data
+      - ./Caddyfile:/etc/caddy/Caddyfile
+
+
+networks:
+ promptInv:
+volumes:
+  postgres:
+  caddy:

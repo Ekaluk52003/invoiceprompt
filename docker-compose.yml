@@ -23,8 +23,6 @@ services:
       REDIS_URL: 'redis://redis:6379'
       PORT: '5000'
     container_name: promptinv_api_container
-    depends_on:
-      - postgres
     ports:
       - "5000:5000"
       - "5555:5555"

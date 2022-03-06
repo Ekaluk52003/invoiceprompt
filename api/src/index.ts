@@ -15,7 +15,7 @@ import { IMyContext } from './interface';
 import { isProd } from './utils';
 
 const main = async () => {
-  dotenv.config();
+  dotenv.config('sss');
 
   const RedisClient = new Redis(process.env.REDIS_URL);
   console.log('w')

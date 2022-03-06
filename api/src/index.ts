@@ -18,6 +18,7 @@ const main = async () => {
   dotenv.config();
 
   const RedisClient = new Redis(process.env.REDIS_URL);
+  console.log('w')
 
    // For checking Redis connection
    // CMD for redis docker:  docker exec -it 78effbdf18db(CONTAINER ID) sh

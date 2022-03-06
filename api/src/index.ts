@@ -38,7 +38,7 @@ const main = async () => {
 
   app.use(
     cors({
-      origin: 'https://front.milldev.click',
+      origin:  process.env.ORIGIN,
       credentials: true,
     })
   );

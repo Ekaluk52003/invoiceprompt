@@ -6,12 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import withAuth from "../utils/withAuth";
 import { Paper } from "@mui/material";
 
-
-
 const Home: NextPage = () => {
-
-
-
   return (
     <Paper
       sx={{
@@ -21,9 +16,8 @@ const Home: NextPage = () => {
       }}
     >
       <Typography variant='h5' component='h5' gutterBottom>
-        This is loading from backend graphql
+        This is mill caprover
       </Typography>
-
     </Paper>
   );
 };

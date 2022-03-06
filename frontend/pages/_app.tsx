@@ -60,7 +60,7 @@ const Myapp = (props: MyAppProps) => {
 };
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:5000/graphql",
+  uri: "https://invoice-prompt.dev.api.milldev.click/grapql",
 
   credentials: "include",
 });

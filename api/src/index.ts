@@ -21,7 +21,8 @@ const main = async () => {
   const RedisClient = new Redis({
     host: 'srv-captain--redis',
     port: 6379,
-    password: 'test123'
+    password: 'test123',
+    connectTimeout: 10000
 });
 
   console.log('w')

@@ -15,9 +15,15 @@ import { IMyContext } from './interface';
 import { isProd } from './utils';
 
 const main = async () => {
-  dotenv.config('deply');
+  dotenv.config();
 
-  const RedisClient = new Redis(process.env.REDIS_URL);
+  // const RedisClient = new Redis(process.env.REDIS_URL);
+  const RedisClient = new Redis({
+    host: 'srv-captain--redis',
+    port: 6379,
+    password: 'test123'
+});
+
   console.log('w')
 
    // For checking Redis connection

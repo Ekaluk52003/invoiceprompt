@@ -25,13 +25,10 @@ const db_1 = require("./db");
 const utils_1 = require("./utils");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     dotenv_1.default.config();
-    const RedisClient = new ioredis_1.default({
-        host: 'srv-captain--redis',
-        port: 6379,
-        password: 'test123',
-        connectTimeout: 10000
+    const RedisClient = new ioredis_1.default(process.env.REDIS_URL);
+    RedisClient.on('error', function (error) {
+        console.log(error);
     });
-    console.log('w');
     const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
     const prisma = yield (0, db_1.getMyPrismaClient)();
     const app = (0, express_1.default)();

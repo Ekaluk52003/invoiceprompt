@@ -33,7 +33,7 @@ RedisClient.on('error', function (error) {
 
    // For checking Redis connection
    // CMD for redis docker:  docker exec -it 78effbdf18db(CONTAINER ID) sh
-  RedisClient.set("foo", "bar");
+  RedisClient.set("mill", "bar");
   RedisClient.get("foo", function (err, result) {
     if (err) {
       console.error(err);

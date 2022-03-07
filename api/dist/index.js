@@ -33,7 +33,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     RedisClient.on('error', function (error) {
         console.log(error);
     });
-    RedisClient.set("foo", "bar");
+    RedisClient.set("mill", "bar");
     RedisClient.get("foo", function (err, result) {
         if (err) {
             console.error(err);

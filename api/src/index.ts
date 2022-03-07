@@ -25,7 +25,11 @@ const main = async () => {
 //     connectTimeout: 10000
 // });
 
-  console.log('w')
+
+RedisClient.on('error', function (error) {
+  console.log(error)
+
+})
 
    // For checking Redis connection
    // CMD for redis docker:  docker exec -it 78effbdf18db(CONTAINER ID) sh

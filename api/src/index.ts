@@ -33,14 +33,14 @@ RedisClient.on('error', function (error) {
 
    // For checking Redis connection
    // CMD for redis docker:  docker exec -it 78effbdf18db(CONTAINER ID) sh
-  // RedisClient.set("foo", "bar");
-  // RedisClient.get("foo", function (err, result) {
-  //   if (err) {
-  //     console.error(err);
-  //   } else {
-  //     console.log(result); // Promise resolves to "bar"
-  //   }
-  // });
+  RedisClient.set("foo", "bar");
+  RedisClient.get("foo", function (err, result) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(result); // Promise resolves to "bar"
+    }
+  });
 
   const RedisStore = RedisSession(session);
   const prisma = await getMyPrismaClient();

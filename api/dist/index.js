@@ -33,6 +33,15 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     RedisClient.on('error', function (error) {
         console.log(error);
     });
+    RedisClient.set("foo", "bar");
+    RedisClient.get("foo", function (err, result) {
+        if (err) {
+            console.error(err);
+        }
+        else {
+            console.log(result);
+        }
+    });
     const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
     const prisma = yield (0, db_1.getMyPrismaClient)();
     const app = (0, express_1.default)();

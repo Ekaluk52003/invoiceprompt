@@ -25,7 +25,11 @@ const db_1 = require("./db");
 const utils_1 = require("./utils");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     dotenv_1.default.config();
-    const RedisClient = new ioredis_1.default(process.env.REDIS_URL);
+    const RedisClient = new ioredis_1.default({
+        host: 'srv-captain--redis-caprover',
+        port: 6379,
+        password: 'redis123'
+    });
     RedisClient.on('error', function (error) {
         console.log(error);
     });

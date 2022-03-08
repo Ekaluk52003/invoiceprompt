@@ -9,7 +9,7 @@ import { IMyContext } from '../interface';
 import { hashPassword, isAuthenticated, verifyPassword } from '../utils';
 import {  UserType } from './UserType';
 import { registerUserInput, ItemInput } from './InputFields';
-import { InvoiceType,status } from './InvoiceType';
+import { InvoiceNumber, InvoiceType,status } from './InvoiceType';
 
 
 
@@ -318,6 +318,25 @@ export const Mutation = mutationType({
           }
         }
       },
+    });
+
+    t.nonNull.field('invoicenumber', {
+      type:InvoiceNumber,
+      args:{
+        number:intArg()
+
+      },
+
+      resolve: async (
+        _,
+        args,
+        { prisma }: IMyContext,
+      ) => {
+  const invoiceNum = await prisma.invoiceNumber.create({
+    data:args.number
+  })
+  return  invoiceNum
+        },
     });
   },
 

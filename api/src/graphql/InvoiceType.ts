@@ -58,6 +58,14 @@ export const InvoiceAmountType = objectType({
   },
 });
 
+export const InvoiceNumber = objectType({
+  name: 'InvoiceNumber',
+  definition(t) {
+    t.int('id');
+    t.int('number');
+  },
+});
+
 export const InvoiceHistoryType = objectType({
   name: 'InvoiceHistoryType',
   definition(t) {

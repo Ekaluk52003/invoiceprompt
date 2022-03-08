@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InvoiceHistoryType = exports.InvoiceAmountType = exports.InvoiceType = exports.JSONScalar = exports.status = void 0;
+exports.InvoiceHistoryType = exports.InvoiceNumber = exports.InvoiceAmountType = exports.InvoiceType = exports.JSONScalar = exports.status = void 0;
 const nexus_1 = require("nexus");
 const UserType_1 = require("./UserType");
 const CustomerType_1 = require("./CustomerType");
@@ -49,6 +49,13 @@ exports.InvoiceAmountType = (0, nexus_1.objectType)({
     definition(t) {
         t.int('amount');
         t.string('date');
+    },
+});
+exports.InvoiceNumber = (0, nexus_1.objectType)({
+    name: 'InvoiceNumber',
+    definition(t) {
+        t.int('id');
+        t.int('number');
     },
 });
 exports.InvoiceHistoryType = (0, nexus_1.objectType)({

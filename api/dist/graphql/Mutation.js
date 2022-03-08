@@ -275,6 +275,18 @@ exports.Mutation = (0, nexus_1.mutationType)({
                     }
                 }),
             });
+        t.nonNull.field('invoicenumber', {
+            type: InvoiceType_1.InvoiceNumber,
+            args: {
+                number: (0, nexus_1.intArg)()
+            },
+            resolve: (_, args, { prisma }) => __awaiter(this, void 0, void 0, function* () {
+                const invoiceNum = yield prisma.invoiceNumber.create({
+                    data: args.number
+                });
+                return invoiceNum;
+            }),
+        });
     },
 });
 //# sourceMappingURL=Mutation.js.map

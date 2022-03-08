@@ -282,7 +282,9 @@ exports.Mutation = (0, nexus_1.mutationType)({
             },
             resolve: (_, args, { prisma }) => __awaiter(this, void 0, void 0, function* () {
                 const invoiceNum = yield prisma.invoiceNumber.create({
-                    data: args.number
+                    data: {
+                        number: args.number
+                    }
                 });
                 return invoiceNum;
             }),

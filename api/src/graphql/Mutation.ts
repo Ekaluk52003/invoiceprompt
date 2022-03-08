@@ -333,7 +333,9 @@ export const Mutation = mutationType({
         { prisma }: IMyContext,
       ) => {
   const invoiceNum = await prisma.invoiceNumber.create({
-    data:args.number
+  data:{
+    number:args.number
+  }
   })
   return  invoiceNum
         },
